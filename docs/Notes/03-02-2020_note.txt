@@ -1,0 +1,20 @@
+Cách sử dụng đa ngôn ngữ
+trong folder resource/lang có 2 file json là en.json (chưa tiếng anh) và vi.json(tiếng việt)
+các bạn để các từ khóa theo ngôn ngữ tương ứng vào đấy theo cấu trúc "tiếng anh":"từ cần thay đổi theo ngôn ngữ".
+VD:
+file en:"Action":"action"
+file vi:"Action":"chức năng"
+
+sau đó các bạn gọi trong view ra như sau {{ __('Action') }} thì từ khóa theo ngôn ngữ tương ứng sẽ hiện ra.
+
+
+"Create, :name": "Create :name" Đây là cấu trúc truyền theo tham số name 
+"Create, :name", ['name' => 'abc'] Đây là cách gọi với truyền tham số name
+
+Nguồn tham khảo:
+https://viblo.asia/p/da-ngon-ngu-i18n-trong-laravel-ByEZkWkAZQ0
+--------------------------------------------------------------------------------------------------------------------
+mình sửa dự án lại thành bất động sản rồi đấy,
+có tạo seed cho loại bds với thêm bảng nhu cầu
+do sai phiên bản nên powerdesigner máy mình hk mở được file cũ nên hk sửa lại db cho các bạn coi được
+trong bất động sản có code lưu hình ảnh và lấy tên đường, các bạn cần thì mở ra xem
