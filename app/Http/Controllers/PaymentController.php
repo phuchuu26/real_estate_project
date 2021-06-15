@@ -76,7 +76,7 @@ class PaymentController extends Controller
 
     public function return(Request $request)
     {
-        
+
         // dd(\Auth::guard('account')->user()->load('customer')->customer->customer_id);
         $url = session('url_prev', '/');
         if ($request->vnp_ResponseCode == '00') {
@@ -125,5 +125,5 @@ class PaymentController extends Controller
             }
         }
     }
-    
+
 }

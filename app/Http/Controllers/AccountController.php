@@ -7,6 +7,7 @@ use App\Models\Account;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
+use App\Models\Province;
 use App\Models\CartTemp;
 use App\Models\Customer;
 use App\Models\CookieUser;
@@ -134,8 +135,8 @@ class AccountController extends Controller
         $nexmo = app('Nexmo\Client');
 
         $nexmo->message()->send([
-            'to'   => '+84 522 970 498',
-            'from' => '+84 522 970 498',
+            'to'   => '+84 939 630 348',
+            'from' => '+84 939 630 348',
             'text' => 'BatdongsanCanTho: '.$string.', co hieu luc 5 phut',
         ]);
         $request->merge(['text' => ($string)]);
@@ -144,11 +145,10 @@ class AccountController extends Controller
     }
     public function register(Request $request)
     {
-// dd($request);
-        $a=\Hash::make($request->code);
-        if(!\Hash::check($request->verify,$a)){
-            return view('auth.verty',compact('request'));
-        }
+        // $a=\Hash::make($request->code);
+        // if(!\Hash::check($request->verify,$a)){
+        //     return view('auth.verty',compact('request'));
+        // }
         $account_id = Account::insertGetId(array(
             'username' => $request->username,
             'password' => \Hash::make($request->password),
@@ -170,7 +170,7 @@ class AccountController extends Controller
             'customer_id'=>$customer_id,
             'cart_status'=>null,
         ]);
-
+            
         return redirect()->route('index');
     }
 
@@ -182,5 +182,11 @@ class AccountController extends Controller
         } else {
             echo true;
         }
+    }
+    public function showRegistrationFormAdmin()
+    {
+        $province = Province::select('province_id', 'province_name')->get();
+
+        return view('auth.register', compact('province'));
     }
 }

@@ -80,8 +80,9 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
+        dd(1);
         $province = Province::select('province_id', 'province_name')->get();
 
-        return view('auth.register', compact('province'));
+        return view('auth.register_admin', compact('province'));
     }
 }

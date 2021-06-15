@@ -188,7 +188,7 @@ class IndexController extends Controller
         'day_view',
         'price_view',
         'blog',
-        'day_blog',));
+        'day_blog'));
 
     }
 }

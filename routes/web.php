@@ -20,6 +20,10 @@ Route::group(['prefix' => ''], function ()
     Route::get('/login', function () {
         return view('auth.login');
     })->name('getLogin');
+    
+    Route::get('/register/admin','AccountController@showRegistrationFormAdmin' )->name('getLoginAdmin');
+
+    
     Route::post('/xetdangnhap', ['as' => 'postLogin', 'uses' => 'AccountController@postLogin']);
     Route::get('/logout', 'AccountController@logout')
         ->name('logout');
