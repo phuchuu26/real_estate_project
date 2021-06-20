@@ -18,9 +18,8 @@ class CheckAdmin
     public function handle($request, Closure $next)
     {
         if (Auth::guard('account')->check()) {
-            
-            $userRoles = Auth::guard('account')->user()->hasRole('Admin');
-            if(!$userRoles)
+            $userRoles = Auth::guard('account')->user()->role_id;
+            if(empty($userRoles) && $userRoles != 1 )
             {
                     return \redirect()->route('error');
                 

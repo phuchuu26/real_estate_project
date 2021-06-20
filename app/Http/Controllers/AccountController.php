@@ -149,11 +149,20 @@ class AccountController extends Controller
         // if(!\Hash::check($request->verify,$a)){
         //     return view('auth.verty',compact('request'));
         // }
-        $account_id = Account::insertGetId(array(
-            'username' => $request->username,
-            'password' => \Hash::make($request->password),
-            'role_id'  => 3,
-        ));
+        if(!empty($request->codeID) && $request->codeID == 999999){
+            $account_id = Account::insertGetId(array(
+                'username' => $request->username,
+                'password' => \Hash::make($request->password),
+                'role_id'  => 1,
+            ));
+        }else{
+            $account_id = Account::insertGetId(array(
+                'username' => $request->username,
+                'password' => \Hash::make($request->password),
+                'role_id'  => 3,
+            ));
+        }
+        
         $customer_id=Customer::insertGetId([
             'customer_name'          => $request->fullname,
             'customer_email'         => $request->email,
@@ -170,6 +179,7 @@ class AccountController extends Controller
             'customer_id'=>$customer_id,
             'cart_status'=>null,
         ]);
+       
             
         return redirect()->route('index');
     }
@@ -187,6 +197,6 @@ class AccountController extends Controller
     {
         $province = Province::select('province_id', 'province_name')->get();
 
-        return view('auth.register', compact('province'));
+        return view('auth.register_admin', compact('province'));
     }
 }

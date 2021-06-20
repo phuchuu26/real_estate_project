@@ -96,12 +96,8 @@
                         </tr>
                         <tr>
                             <td><label>Phương hướng</label>
-                                {{-- <select name="direction" id="direction" class="form-control form-control-sm">
-                                    <option value="" selected>-- Chọn --</option>
-                                    {{-- @foreach ($direction as $item) --}}
-                                {{-- <option value="{{$item->direction_id}}">{{$item->direction_name}}</option>
-                                @endforeach
-                                </select><br> --}}
+                                <input type="text" name="direction"
+                                class="form-control input-transparent"><br>
                             </td>
                         </tr>
                         <tr>
@@ -145,10 +141,6 @@
         </div>
 
     </div>
-    <label for="captcha">Captcha</label>
-    {!! NoCaptcha::renderJs() !!}
-    {!! NoCaptcha::display() !!}
-    <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
     <div class="row">
         <div class="col-sm-2">
             <div class="form-group">
@@ -182,10 +174,16 @@
         //lấy quận huyện theo tỉnh thành phố
         $("#province").change(function(){
             var province_id = $(this).val();
-            $.get("../district/"+province_id, function(data){
-                $("#district").html(data);
+
+            try {
+                $.get("../district/"+province_id, function(data){
+                    $("#district").html(data);
+                });  
+            } catch (error) {
+                    console.log(error);
+            }
+
             });
-        });
         //lấy đường phố theo tỉnh
         $("#province").change(function(){
             var province_id = $(this).val();
@@ -199,15 +197,24 @@
             var district_id = "";
             var province_id = $("#province").val();
             var district_id = $("#district").val();
-            $.get("../ward/"+province_id+'/'+district_id, function(data){
-                $("#ward").html(data);
-            });
+            
+            
+            try {
+                // $.get("../ward/"+province_id+'/'+district_id, function(data){
+                $.get("../ward/"+district_id, function(data){
+                    $("#ward").html(data);
+                });  
+            } catch (error) {
+                console.log(error);
+            }
+
         });
         //lấy đường phố theo tỉnh,huyện
-        $("#district").change(function(){
-            var province_id = $("#province").val();
-            var district_id = $("#district").val();
-            $.get("../street/"+province_id+'/'+district_id, function(data){
+        $("#ward").change(function(){
+            // var province_id = $("#province").val();
+            // var district_id = $("#district").val();
+            var ward_id = $("#ward").val();
+            $.get("../street/"+ward_id, function(data){
                 $("#street").html(data);
             });
         });

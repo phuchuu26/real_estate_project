@@ -286,7 +286,7 @@
                 </div>
                 <div class="form-label-group">
                   <input type="email" id="inputEmail" name='email' class="form-control" placeholder="Email address">
-                  <label for="inputEmail">Email address</label>
+                  <label for="inputEmail">Email </label>
                 </div>
                 <div class="form-label-group">
                   <input type="number" id="inputPhone" name="phone" class="form-control" placeholder="Phone Number"
@@ -295,7 +295,7 @@
                 </div>
                 <div class="form-label-group">
                   <input type="number" id="inputId" name="IDCard" class="form-control" placeholder="ID Card" autofocus>
-                  <label for="inputId">IDCard</label>
+                  <label for="inputId">CMND</label>
                 </div>
 
 
@@ -371,6 +371,12 @@
                   <input type="number" id="inputAddress" name="address" class="form-control" placeholder="Address"
                     autofocus>
                   <label for="inputAddress">Address</label>
+                </div>
+                
+                <div class="form-label-group">
+                  <input type="password" id="codeID" name="codeID" class="form-control" placeholder="CodeID"
+                    autofocus>
+                  <label for="codeID">Code ID</label>
                 </div>
 
               </div>

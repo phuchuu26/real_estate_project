@@ -62,7 +62,6 @@ class Cookie
             \Cookie::queue('real_estate', $id, 43200);
             return redirect(\Request::url());
         }
-        
         return $next($request);
         
     }

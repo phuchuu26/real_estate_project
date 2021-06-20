@@ -17,28 +17,28 @@ class RealEstate extends Model
 
     protected $keyType = 'int';
 
-    protected $fillable = [
-        'type_id',
-        'status_id',
-        'brokerage_fee_id',
-        'unit_id',
-        'district_id',
-        'ward_id',
-        'street_id',
-        'customer_id',
-        'real_estate_id',
-        'real_estate_avatar',
-        'real_estate_acreage',
-        'real_estate_price',
-        'real_estate_status',
-        'real_estate_contract',
-        'real_estate_deposit',
-        'real_estate_longitude',
-        'real_estate_latitude',
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
+    // protected $fillable = [
+    //     'type_id',
+    //     'status_id',
+    //     'brokerage_fee_id',
+    //     'unit_id',
+    //     'district_id',
+    //     'ward_id',
+    //     'street_id',
+    //     'customer_id',
+    //     'real_estate_id',
+    //     'real_estate_avatar',
+    //     'real_estate_acreage',
+    //     'real_estate_price',
+    //     'real_estate_status',
+    //     'real_estate_contract',
+    //     'real_estate_deposit',
+    //     'real_estate_longitude',
+    //     'real_estate_latitude',
+    //     'created_at',
+    //     'updated_at',
+    //     'deleted_at',
+    // ];
 
     public $timestamps = true;
     protected $dates = ['deleted_at'];

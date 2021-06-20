@@ -63,40 +63,8 @@
                     </table>
                 </div>
             </section>
-            <section class="panel">
-                <div class="container-fluid">
-                    <table class="table">
-                        <tr>
-                            <td><img src="https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg" style="width:2%;" ;>
-                                <label>Title</label><input type="text" name="title_en" size="100%" autofocus
-                                    class="form-control input-transparent"><br></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg" style="width:2%;" ;>
-                                <label>Nội dung</label>
-                                <input name="intro_en" cols="30" id="intro_en" style="max-width:100%;height: 235px;"
-                                    maxlength="255" class="form-control input-transparent">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg" style="width:2%;" ;>
-                                <label>Content</label><textarea name="content_en" cols="30" id="editor2"
-                                    style="max-width:100%;height: 235px;"
-                                    class="form-control input-transparent"></textarea>
-                            </td>
-                        </tr>
-                        <br>
-
-                    </table>
-                </div>
-            </section>
 
         </div>
-        <label for="captcha">Captcha</label>
-        {!! NoCaptcha::renderJs() !!}
-        {!! NoCaptcha::display() !!}
-        <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
         <div class="row">
             <br><br>
             <div class="col-sm-2">

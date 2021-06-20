@@ -21,7 +21,7 @@ Route::group(['prefix' => ''], function ()
         return view('auth.login');
     })->name('getLogin');
     
-    Route::get('/register/admin','AccountController@showRegistrationFormAdmin' )->name('getLoginAdmin');
+    Route::get('/register_admin','AccountController@showRegistrationFormAdmin' )->name('getLoginAdmin');
 
     
     Route::post('/xetdangnhap', ['as' => 'postLogin', 'uses' => 'AccountController@postLogin']);
@@ -31,6 +31,7 @@ Route::group(['prefix' => ''], function ()
     Route::post('/register/submit', ['as' => 'register.submit', 'uses' => 'AccountController@register']);
     Route::get('/find_username/{username}', ['as' => 'find_username', 'uses' => 'AccountController@find_username']);
 });
+
 
 Route::group(['middleware' => ['cookie']], function ()
 {
@@ -636,14 +637,9 @@ Route::group(['middleware' => ['cookie']], function ()
                     });
 
                 });
-            });
-
-            //admin end
 
 
-            //staff
-            Route::group(['middleware' => ['checkStaff']], function ()
-            {
+            
                 //report
                 Route::group(['prefix' => 'report'], function ()
                 {
@@ -811,7 +807,7 @@ Route::group(['middleware' => ['cookie']], function ()
     Auth::routes();
 
     //DOM lấy dữ liệu
-    Route::group(['prefix' => ''], function ()
+    Route::group(['prefix' => 'dashboard'], function ()
     {
         Route::get('/district/{province_id}', 'DOMController@get_district')
             ->name('district');

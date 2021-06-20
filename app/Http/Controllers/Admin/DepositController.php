@@ -23,7 +23,7 @@ class DepositController extends Controller
     {
        // $data =DB::table('deposit')->join('staff','staff.staff_id','deposit.staff_id')->get();
         
-        return view('pages.admin.deposit.create',);
+        return view('pages.admin.deposit.create');
     }
 
     /**

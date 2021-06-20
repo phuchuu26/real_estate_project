@@ -9,8 +9,9 @@ use App\Models\Type;
 use App\Models\Form;
 use App\Models\Image;
 use App\Models\ImageRealEstate;
-use App\Models\Direction;
+// use App\Models\Direction;
 use App\Models\Bank;
+use App\Models\Translation;
 use App\Models\DetailDeposit;
 use Carbon\Carbon;
 use DB;
@@ -55,11 +56,7 @@ class RealEstateController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'g-recaptcha-response' => 'required|captcha',
-        ]);
-        // dd($request->session());
-        // dd($request);
+        // dd($request->address);
         if ($request->hasFile('avatar')) {
             $time = str_replace(' ', '', Carbon::now('Asia/Ho_Chi_Minh')->toDateTimeString());
             $real_estate_id = RealEstate::insertGetId(array(
@@ -71,7 +68,8 @@ class RealEstateController extends Controller
                     'ward_id' => $request->ward,
                     'district_id' => $request->district,
                     'unit_id' => $request->unit,
-                    'status_id' => 1,
+                    'real_estate_status' => 'Đang bán',
+                    // 'real_estate_description' => $request->description,
                     //Phải dùng tài khoản khách hàng để tạo
                     // 'customer_id' => Auth::guard('account')->user()->account_id,
                 ));
@@ -86,7 +84,7 @@ class RealEstateController extends Controller
             //lưu file
             $request->file('avatar')->move(
             'img/Product', //nơi cần lưu
-            $time.'_'.$file_name,
+            $time.'_'.$file_name
             );
             $avatar_path = Image::insertGetId(array(
                 'image_path' => 'img/Product/'.$time.'_'.$file_name,
@@ -97,12 +95,13 @@ class RealEstateController extends Controller
                 'image_id' => $avatar_path,
                 'image_real_estate_note' => 'Avatar',
             ]);
+       
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $value) {
                     $file_name = $value->getClientOriginalName();
                     $value->move(
                         'img/Product', //nơi cần lưu
-                        $time.'_'.$file_name,
+                        $time.'_'.$file_name
                         );
                     $hinhanh = Image::insertGetId(array(
                         'image_path' => 'img/Product/'.$time.'_'.$file_name,
@@ -110,7 +109,7 @@ class RealEstateController extends Controller
                     ImageRealEstate::insert([
                         'real_estate_id' => $real_estate_id,
                         'image_id' => $hinhanh,
-                        'image_real_estate_note' => 'Image',
+                        'image_real_estate_note' => 'Image'
                     ]);
                 }
             }

@@ -5,12 +5,14 @@
 </style>
 <!--sidebar start-->
 <aside>
+
     <div id="sidebar" class="nav-collapse">
+
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 {{-- nhân viên --}}
-                @if( \Auth::guard('account')->user()->hasRole('Staff'))
+                @if( \Auth::guard('account')->user()->hasRole('Admin'))
                 {{-- Bất động sản --}}
                 <li>
 

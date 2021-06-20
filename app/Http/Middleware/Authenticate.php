@@ -17,9 +17,11 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        // dd($request);
+        // if(empty(Auth::guard('account')->user())){
+        //     return url('login');
+        // }
         if (!Auth::guard('account')->user()->account_id) {
-            return route('getLogin');
+            return url('login');
         }
     }
 }

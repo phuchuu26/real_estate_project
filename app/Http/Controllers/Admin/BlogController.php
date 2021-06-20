@@ -63,7 +63,7 @@ class BlogController extends Controller
             //lưu filed
             $request->file('avatar')->move(
             public_path('/img/blog/'), //nơi cần lưu
-            $name_file,
+            $name_file
             );
 
             $blog_id=Blog::insertGetId([
